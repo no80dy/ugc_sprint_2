@@ -57,7 +57,7 @@ jobs:
     steps:
       - name: Print CI status
         run: |
-          if [ "${{ needs.build.outcome}}" != "success" ]; then
+          if [ "${{ needs.build.outcome }}" != "success" ]; then
             echo "Build failed! Status of CI pipeline: ${{ needs.build.outcome }}"
             exit 1
           else
