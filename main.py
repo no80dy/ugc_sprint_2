@@ -7,7 +7,7 @@ def get_message(message: str) -> str:
     This function returns the message.
 
     Parameters:
-        - message (str): The text of message.
+        - message: The text of message.
 
     Returns:
         - str: The string message.
@@ -17,4 +17,4 @@ def get_message(message: str) -> str:
 
 if __name__ == '__main__':
     message_from_stdout = get_message('Hello world')
-    logging.info('RESULT: {}'.format(message_from_stdout))
+    logging.info('RESULT: {0}'.format(message_from_stdout))
