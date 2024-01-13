@@ -65,8 +65,8 @@ jobs:
             User ${{ github.actor }} created commit:
             
             CI jobs statuses:
-            Tests: ${{ needs.run-tests.result}} (${{ needs.run-tests.outputs.jobName }})
-            Linters: ${{ needs.run-linters.result }} (${{ needs.run-linters.outputs.jobName }})
+            Tests: ${{ needs.run-tests.result}}
+            Linters: ${{ needs.run-linters.result }}
 
             Commit message: ${{ github.event.commits[0].message }}
 
