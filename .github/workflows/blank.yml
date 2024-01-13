@@ -27,8 +27,9 @@ jobs:
 
       - name: Lint with wemake-python-styleguide
         run: |
+          pip install flake8
           pip install wemake-python-styleguide
-          python3 -m wemake_python_styleguide
+          flake8 .
       
       - name: Type Check with mypy
         run: |
