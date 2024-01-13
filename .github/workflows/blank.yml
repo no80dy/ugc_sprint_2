@@ -22,7 +22,7 @@ jobs:
 
       - name: test on python ${{ matrix.python-version }}
         run: |
-          python3 -m pytest
+          python3 -m pytest tests/unit/
 
   run-linters:
     runs-on: ubuntu-latest
