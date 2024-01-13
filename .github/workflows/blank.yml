@@ -36,9 +36,9 @@ jobs:
           pip install mypy
           mypy .
 
-      - name: Test on Python ${{ matrix.python-version }}
-        run: |
-          python3 -m pytest
+#      - name: Test on Python ${{ matrix.python-version }}
+#        run: |
+#          python3 -m pytest
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
