@@ -5,12 +5,13 @@ import logging
 
 def get_message(message: str) -> str:
 	"""
-	Returns message in string format.
+	This function returns the message.
 
-    :param message: Сообщение.
-    :type message: str
-    :return: Сообщение.
-    :rtype: str
+	Args:
+		- message (str): The text of message.
+
+	Returns:
+		- str: The string message.
 	"""
 	return message
 
