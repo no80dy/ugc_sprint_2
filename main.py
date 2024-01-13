@@ -1,5 +1,4 @@
 """Test the functionality of the module."""
-
 import logging
 
 
