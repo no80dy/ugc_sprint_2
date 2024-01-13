@@ -62,9 +62,14 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            ${{ github.actor }} created commit:
-            Commit message: ${{ github.event.commits[0].message }}
+            User ${{ github.actor }} created commit:
             
+            CI jobs statuses:
+            Tests: ${{ needs.run-tests.result}} (${{ needs.run-tests.outputs.jobName }})
+            Linters: ${{ needs.run-linters.result }} (${{ needs.run-linters.outputs.jobName }})
+
+            Commit message: ${{ github.event.commits[0].message }}
+
             Repository: ${{ github.repository }}
 
             See changes: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
