@@ -49,6 +49,7 @@ jobs:
   telegram-notification:
     runs-on: ubuntu-latest
 
+    if: always()
     needs: [run-tests, run-linters]
 
     steps:
@@ -56,12 +57,11 @@ jobs:
         uses: actions/checkout@v3
 
       - name: send message in telegram
-        if: always()
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
             Статус выполнения:
-              Тесты: ${{ needs.run-tests.result }}
-              Линтеры: ${{ needs.run-linters.result }}
+            Тесты: ${{ needs.run-tests.result }}
+            Линтеры: ${{ needs.run-linters.result }}
