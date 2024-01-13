@@ -1,10 +1,17 @@
-"""This is a testing module"""
+"""Test the functionality of the module."""
 
 import logging
 
 
 def get_message(message: str) -> str:
-	"""This is the function that..."""
+	"""
+	Returns message in string format.
+
+    :param message: Сообщение.
+    :type message: str
+    :return: Сообщение.
+    :rtype: str
+	"""
 	return message
 
 
