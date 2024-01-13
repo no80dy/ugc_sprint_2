@@ -61,5 +61,5 @@ jobs:
             echo "Build failed! Status of CI pipeline: ${{ needs.build.result }}"
             exit 1
           else
-            echo "Build secceeded! Status or CI pipeline: $ {{ needs.build.result }}"
+            echo "Build secceeded! Status or CI pipeline: ${{ needs.build.result }}"
           fi
