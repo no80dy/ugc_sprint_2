@@ -42,6 +42,7 @@ jobs:
           pepper8 -o report.html report.txt
 
       - name: upload report
+        if: always()
         uses: actions/upload-artifact@v2
         with:
           name: report
