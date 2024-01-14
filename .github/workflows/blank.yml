@@ -35,6 +35,7 @@ jobs:
           pytest tests/unit/test.py
 
   run-linters:
+    name: Run linters
     runs-on: ubuntu-latest
 
     steps:
@@ -73,6 +74,7 @@ jobs:
           mypy .
 
   telegram-notification:
+    name: Telegram notification
     runs-on: ubuntu-latest
 
     if: always()
