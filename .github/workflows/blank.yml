@@ -1,10 +1,8 @@
 name: CI
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "dev" ]
 
   workflow_dispatch:
 
@@ -85,13 +83,14 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            🔥 ${{ github.actor }} created commit:
+            🔥 ${{ github.actor }} created Pull Request!
+
+            Pull Request Title: ${{ github.event.pull_request.title }}
+            Pull Request Body: ${{ github.event.pull_request.body }}
 
             CI/CD jobs statuses:
-            Tests: ${{ needs.run-tests.result}}
-            Linters: ${{ needs.run-linters.result }}
-
-            Commit message: ${{ github.event.commits[0].message }}
+              - Run tests: ${{ needs.run-tests.result}}
+              - Run linters: ${{ needs.run-linters.result }}
 
             Repository: ${{ github.repository }}
 
