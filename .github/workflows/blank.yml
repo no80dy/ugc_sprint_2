@@ -2,7 +2,10 @@ name: CI
 
 on:
   pull_request:
-    branches: [ "main", "dev" ]
+    branches: [ "main" ]
+    types:
+      - opened
+      - synchronize
 
   workflow_dispatch:
 
@@ -69,8 +72,6 @@ jobs:
   telegram-notification:
     name: Telegram notification
     runs-on: ubuntu-latest
-
-    if: always()
     needs: [run-tests, run-linters]
 
     steps:
@@ -87,10 +88,6 @@ jobs:
 
             Pull Request Title: ${{ github.event.pull_request.title }}
             Pull Request Body: ${{ github.event.pull_request.body }}
-
-            CI/CD jobs statuses:
-              - Run tests: ${{ needs.run-tests.result}}
-              - Run linters: ${{ needs.run-linters.result }}
 
             Repository: ${{ github.repository }}
 
