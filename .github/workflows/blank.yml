@@ -13,14 +13,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: install dependencies
+      - name: Install dependencies
         run: |
           pip install -r requirements.txt
 
-      - name: test on python ${{ matrix.python-version }}
+      - name: Test on python ${{ matrix.python-version }}
         run: |
           pytest tests/unit/test.py
 
@@ -28,17 +28,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: install dependencies
+      - name: Install dependencies
         run: |
           pip install -r requirements.txt
 
-      - name: lint with wemake-python-styleguide
+      - name: Lint with wemake-python-styleguide
         run: |
           pip install flake8 wemake-python-styleguide pepper8
-          flake8 --output-file=report.txt . || true
+          flake8 --output-file=report.txt .
+
+      - name: Convert report to HTML file
+        if: always()
+        run: |
           pepper8 -o report.html report.txt
 
       - name: upload report
@@ -48,7 +52,7 @@ jobs:
           name: flake8-report
           path: report.html
 
-      - name: type check with mypy
+      - name: Type check with mypy
         run: |
           pip install mypy
           mypy .
@@ -60,10 +64,10 @@ jobs:
     needs: [run-tests, run-linters]
 
     steps:
-      - name: checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: send message in telegram
+      - name: Send message in telegram
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
