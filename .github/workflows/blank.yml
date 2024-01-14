@@ -10,11 +10,21 @@ on:
 
 jobs:
   run-tests:
+    name: Run tests
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [3.10, 3.11, 3.12]
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
         run: |
@@ -30,6 +40,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
         run: |
@@ -73,9 +88,9 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            User ${{ github.actor }} created commit:
+            :fire: ${{ github.actor }} created commit:
             
-            CI jobs statuses:
+            CI/CD jobs statuses:
             Tests: ${{ needs.run-tests.result}}
             Linters: ${{ needs.run-linters.result }}
 
