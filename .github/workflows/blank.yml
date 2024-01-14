@@ -38,8 +38,14 @@ jobs:
       - name: lint with wemake-python-styleguide
         run: |
           pip install flake8 wemake-python-styleguide pepper8
-          flake8 . > report.txt
+          flake8 --output-file=report.txt .
           pepper8 -o report.html report.txt
+
+      - name: upload report
+        uses: actions/upload-artifact@v2
+        with:
+          name: report
+          path: report.html
 
       - name: type check with mypy
         run: |
