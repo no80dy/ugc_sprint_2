@@ -15,7 +15,7 @@ def get_message(message: str) -> str:
     return message
 
 
-
+Hello!!
 
 if __name__ == '__main__':
     message_from_stdout = get_message('Hello world')
