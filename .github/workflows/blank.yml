@@ -90,8 +90,8 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            :fire: ${{ github.actor }} created commit:
-            
+            🔥 ${{ github.actor }} created commit:
+
             CI/CD jobs statuses:
             Tests: ${{ needs.run-tests.result}}
             Linters: ${{ needs.run-linters.result }}
