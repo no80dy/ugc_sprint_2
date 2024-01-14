@@ -92,8 +92,8 @@ jobs:
             Pull Request Body: ${{ github.event.pull_request.body }}
 
             CI/CD jobs statuses:
-              - Run tests: ${{ needs.run-tests.result }} ${{ needs.run-tests.result == 'success' ? '✅' : '❌' }}
-              - Run linters: ${{ needs.run-linters.result }} ${{ needs.run-linters.result == 'success' ? '✅' : '❌' }}
+              - Run tests: ${{ needs.run-tests.result }}
+              - Run linters: ${{ needs.run-linters.result }}
 
             Repository: ${{ github.repository }}
 
