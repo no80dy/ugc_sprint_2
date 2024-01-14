@@ -37,7 +37,7 @@ jobs:
 
       - name: lint with wemake-python-styleguide
         run: |
-          pip install wemake-python-styleguide pepper8
+          pip install flake8 wemake-python-styleguide pepper8
           flake8 . > report.txt
           pepper8 -o report.html report.txt
 
